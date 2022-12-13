@@ -1,5 +1,4 @@
 class AnimalsController < ApplicationController
-    skip_before_action :verify_authenticity_token
     def index
         animals=Animal.all
         render json:animals
@@ -25,6 +24,15 @@ class AnimalsController < ApplicationController
         end
 
     end
+    def update
+        animal = Animal.find(params[:id])
+        animal.update(animal_params)
+        if animal.valid?
+          render json: animal
+        else
+          render json: animal.errors
+        end
+      end
 
     private
     def animal_params
