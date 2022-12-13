@@ -1,12 +1,12 @@
 class AnimalsController < ApplicationController
-    skip_before_action :verify_authenticity_token
+
     def index
         animals=Animal.all
-        render json:animals
+        render json: animals, include: [:animal_sightings]
     end
     def show
         animal=Animal.find(params[:id])
-        render json:animal
+        render json: animal
     end
     def create
         animal=Animal.create(animal_params)
@@ -40,3 +40,4 @@ class AnimalsController < ApplicationController
         params.require(:animal).permit(:common_name, :scientific_binomial)
     end
 end
+
