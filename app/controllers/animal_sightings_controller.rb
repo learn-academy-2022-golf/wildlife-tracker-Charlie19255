@@ -1,14 +1,14 @@
 class AnimalSightingsController < ApplicationController
     def index
-        sight=AnimalSighting.all
+        sight = AnimalSighting.all
         render json: sight
     end
     def show
-        sight=AnimalSighting.find(params[:id])
+        sight = AnimalSighting.find(params[:id])
         render json: sight
     end
     def create
-        sight=AnimalSighting.create(sight_params)
+        sight = AnimalSighting.create(sight_params)
         if sight.valid?
             render json: sight
         else
