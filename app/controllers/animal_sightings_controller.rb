@@ -1,11 +1,11 @@
 class AnimalSightingsController < ApplicationController
     def index
         sight=AnimalSighting.all
-        render json:sight
+        render json: sight
     end
     def show
         sight=AnimalSighting.find(params[:id])
-        render json:sight
+        render json: sight
     end
     def create
         sight=AnimalSighting.create(sight_params)
